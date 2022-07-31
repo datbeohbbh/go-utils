@@ -34,9 +34,33 @@ func (curSet *set[T]) Find(value T) bool {
 	return (curSet.tree.find(value))
 }
 
+func (curSet *set[T]) LowerBound(value T) (*T, bool) {
+	lowerBoundNode := curSet.tree.lowerBound(value)
+	if lowerBoundNode == nil {
+		return nil, false
+	} else {
+		return &lowerBoundNode.value, true
+	}
+}
+
+func (curSet *set[T]) UpperBound(value T) (*T, bool) {
+	upperBoundNode := curSet.tree.upperBound(value)
+	if upperBoundNode == nil {
+		return nil, false
+	} else {
+		return &upperBoundNode.value, true
+	}
+}
+
 func (curSet *set[T]) Size() int64 {
 	if curSet.Empty() {
 		return 0
 	}
 	return curSet.tree.size
+}
+
+func (curSet *set[T]) Clear() {
+	if !curSet.Empty() {
+		curSet.tree = nil
+	}
 }

@@ -1,6 +1,6 @@
 package avltree
 
-func (curNode *node[T]) reloadHeight() {
+func (curNode *node[T]) rebalanceHeight() {
 	var lhs, rhs int64
 	if !curNode.left.empty() {
 		lhs = curNode.left.height
@@ -15,7 +15,7 @@ func (curNode *node[T]) reloadHeight() {
 	}
 }
 
-func (curNode *node[T]) reloadBalance() {
+func (curNode *node[T]) rebalanceBalance() {
 	var lhs, rhs int64 = 0, 0
 	if !curNode.left.empty() {
 		lhs = curNode.left.height
@@ -26,7 +26,7 @@ func (curNode *node[T]) reloadBalance() {
 	curNode.balance = lhs - rhs
 }
 
-func (curNode *node[T]) reloadSize() {
+func (curNode *node[T]) rebalanceSize() {
 	var lhs, rhs int64 = 0, 0
 	if !curNode.left.empty() {
 		lhs = curNode.left.size
@@ -37,10 +37,10 @@ func (curNode *node[T]) reloadSize() {
 	curNode.size = 1 + lhs + rhs
 }
 
-func (curNode *node[T]) reload() {
-	curNode.reloadHeight()
-	curNode.reloadBalance()
-	curNode.reloadSize()
+func (curNode *node[T]) rebalance() {
+	curNode.rebalanceHeight()
+	curNode.rebalanceBalance()
+	curNode.rebalanceSize()
 }
 
 func (curNode *node[T]) rotateLeft() *node[T] {
@@ -48,8 +48,8 @@ func (curNode *node[T]) rotateLeft() *node[T] {
 	leftRoot := newRoot.left
 	newRoot.left = curNode
 	curNode.right = leftRoot
-	curNode.reload()
-	newRoot.reload()
+	curNode.rebalance()
+	newRoot.rebalance()
 	return newRoot
 }
 
@@ -58,8 +58,8 @@ func (curNode *node[T]) rotateRight() *node[T] {
 	rightRoot := newRoot.right
 	newRoot.right = curNode
 	curNode.left = rightRoot
-	curNode.reload()
-	newRoot.reload()
+	curNode.rebalance()
+	newRoot.rebalance()
 	return newRoot
 }
 
@@ -84,6 +84,6 @@ func (curNode *node[T]) rotateNode() *node[T] {
 }
 
 func (curNode *node[T]) balanceTree() *node[T] {
-	curNode.reload()
+	curNode.rebalance()
 	return curNode.rotateNode()
 }
