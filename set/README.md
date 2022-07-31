@@ -28,3 +28,18 @@ func (t T) Equal(rhs any) bool {
 	return (t.value == t.Cast(rhs).value)
 }
 ```
+
+- How to use?
+
+```golang
+import (
+	set "github.com/datbeohbbh/go-utils/set"
+)
+
+func main() {
+	s := set.New[T]()
+	s.Insert(T{value: 10})
+	s.Remove(T{value: 10})
+	found := s.Find(T{value: 10})
+}
+```
