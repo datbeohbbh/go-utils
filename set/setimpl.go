@@ -4,38 +4,38 @@ import (
 	compare "github.com/datbeohbbh/go-utils/set/interfaces"
 )
 
-type set[T compare.IComparator] struct {
+type treeSet[T compare.IComparator] struct {
 	tree *node[T]
 }
 
-func New[T compare.IComparator]() *set[T] {
-	return &set[T]{
+func New[T compare.IComparator]() *treeSet[T] {
+	return &treeSet[T]{
 		tree: nil,
 	}
 }
 
-func (curSet *set[T]) Empty() bool {
-	return curSet.tree.empty()
+func (curTreeSet *treeSet[T]) Empty() bool {
+	return curTreeSet.tree.empty()
 }
 
-func (curSet *set[T]) Insert(value T) bool {
+func (curTreeSet *treeSet[T]) Insert(value T) bool {
 	inserted := true
-	curSet.tree, inserted = curSet.tree.insert(value)
+	curTreeSet.tree, inserted = curTreeSet.tree.insert(value)
 	return inserted
 }
 
-func (curSet *set[T]) Remove(value T) bool {
+func (curTreeSet *treeSet[T]) Remove(value T) bool {
 	removed := true
-	curSet.tree, removed = curSet.tree.remove(value)
+	curTreeSet.tree, removed = curTreeSet.tree.remove(value)
 	return removed
 }
 
-func (curSet *set[T]) Find(value T) bool {
-	return (curSet.tree.find(value))
+func (curTreeSet *treeSet[T]) Find(value T) bool {
+	return (curTreeSet.tree.find(value))
 }
 
-func (curSet *set[T]) LowerBound(value T) (*T, bool) {
-	lowerBoundNode := curSet.tree.lowerBound(value)
+func (curTreeSet *treeSet[T]) LowerBound(value T) (*T, bool) {
+	lowerBoundNode := curTreeSet.tree.lowerBound(value)
 	if lowerBoundNode == nil {
 		return nil, false
 	} else {
@@ -43,8 +43,8 @@ func (curSet *set[T]) LowerBound(value T) (*T, bool) {
 	}
 }
 
-func (curSet *set[T]) UpperBound(value T) (*T, bool) {
-	upperBoundNode := curSet.tree.upperBound(value)
+func (curTreeSet *treeSet[T]) UpperBound(value T) (*T, bool) {
+	upperBoundNode := curTreeSet.tree.upperBound(value)
 	if upperBoundNode == nil {
 		return nil, false
 	} else {
@@ -52,15 +52,33 @@ func (curSet *set[T]) UpperBound(value T) (*T, bool) {
 	}
 }
 
-func (curSet *set[T]) Size() int64 {
-	if curSet.Empty() {
+func (curTreeSet *treeSet[T]) Size() int64 {
+	if curTreeSet.Empty() {
 		return 0
 	}
-	return curSet.tree.size
+	return curTreeSet.tree.size
 }
 
-func (curSet *set[T]) Clear() {
-	if !curSet.Empty() {
-		curSet.tree = nil
+func (curTreeSet *treeSet[T]) Clear() {
+	if !curTreeSet.Empty() {
+		curTreeSet.tree = nil
+	}
+}
+
+func (curTreeSet *treeSet[T]) Begin() *T {
+	res := curTreeSet.tree.begin()
+	if res == nil {
+		return nil
+	} else {
+		return &(res.value)
+	}
+}
+
+func (curTreeSet *treeSet[T]) End() *T {
+	res := curTreeSet.tree.end()
+	if res == nil {
+		return nil
+	} else {
+		return &(res.value)
 	}
 }
