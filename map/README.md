@@ -6,17 +6,17 @@
 
 ```golang
 // Your Type
-type T struct {
+type K struct {
 	value int
 }
 
 // Less comparison
-func (t T) Less(rhs T) bool {
+func (t K) Less(rhs K) bool {
 	return t.value < rhs.value
 }
 
 // Equal comparison
-func (t T) Equal(rhs T) bool {
+func (t K) Equal(rhs K) bool {
 	return (t.value == rhs.value)
 }
 ```
