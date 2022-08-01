@@ -4,41 +4,44 @@ import (
 	"math/rand"
 	"testing"
 	"time"
+
+	"github.com/datbeohbbh/go-utils/types"
 )
 
 func TestLowerBoundSmall(t *testing.T) {
 	a := []int{10, 9, 8, 16, 13, 17}
 	set := New[T]()
 	for _, v := range a {
-		set.Insert(T{value: v})
+		vv := types.NewInteger(int32(v))
+		set.Insert(vv)
 	}
-	res, _ := set.LowerBound(T{value: 10})
-	if res == nil || (*res).value != 10 {
+	res, _ := set.LowerBound(types.NewInteger(int32(10)))
+	if res == nil || (*res).GetValue() != 10 {
 		t.Errorf("expected: %d, found: %v", 10, res)
 	}
 
-	res, _ = set.LowerBound(T{value: 9})
-	if res == nil || (*res).value != 9 {
+	res, _ = set.LowerBound(types.NewInteger(int32(9)))
+	if res == nil || (*res).GetValue() != 9 {
 		t.Errorf("expected: %d, found: %v", 9, res)
 	}
 
-	res, _ = set.LowerBound(T{value: 14})
-	if res == nil || (*res).value != 16 {
+	res, _ = set.LowerBound(types.NewInteger(int32(14)))
+	if res == nil || (*res).GetValue() != 16 {
 		t.Errorf("expected: %d, found: %v", 16, res)
 	}
 
-	res, _ = set.LowerBound(T{value: 12})
-	if res == nil || (*res).value != 13 {
+	res, _ = set.LowerBound(types.NewInteger(int32(12)))
+	if res == nil || (*res).GetValue() != 13 {
 		t.Errorf("expected: %d, found: %v", 13, res)
 	}
 
-	res, _ = set.LowerBound(T{value: 20})
+	res, _ = set.LowerBound(types.NewInteger(int32(20)))
 	if res != nil {
 		t.Errorf("expected nil, found: %v", res)
 	}
 
-	set.Insert(T{value: 20})
-	res, _ = set.LowerBound(T{value: 20})
+	set.Insert(types.NewInteger(int32(20)))
+	res, _ = set.LowerBound(types.NewInteger(int32(20)))
 	if res == nil {
 		t.Errorf("expected %d, found: %v", 20, res)
 	}
@@ -55,20 +58,23 @@ func TestLowerBoundStress(t *testing.T) {
 
 	for i := 1; i <= n; i++ {
 		val := l + rand.Intn(r-l+1)
-		set.Insert(T{value: val})
+		v := types.NewInteger(int32(val))
+		set.Insert(v)
 	}
 
 	for val := 1; val < l; val++ {
-		res, found := set.LowerBound(T{value: r + val})
+		v := types.NewInteger(int32(r + val))
+		res, found := set.LowerBound(v)
 		if found || res != nil {
-			t.Errorf("expected: value %d can not be found", r+val)
+			t.Errorf("expected: GetValue() %d can not be found", r+val)
 		}
 	}
 
 	for val := 1; val < l; val++ {
-		res, found := set.LowerBound(T{value: val})
+		v := types.NewInteger(int32(val))
+		res, found := set.LowerBound(v)
 		if !found || res == nil {
-			t.Errorf("expected: value %d can be found", val)
+			t.Errorf("expected: GetValue() %d can be found", val)
 		}
 	}
 }

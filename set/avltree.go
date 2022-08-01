@@ -1,7 +1,7 @@
 package avltree
 
 import (
-	compare "github.com/datbeohbbh/go-utils/set/interfaces"
+	compare "github.com/datbeohbbh/go-utils/interfaces"
 )
 
 type node[T compare.IComparator[T]] struct {

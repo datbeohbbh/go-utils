@@ -1,16 +1,8 @@
 package avltree
 
-type T struct {
-	value int
-}
+import "github.com/datbeohbbh/go-utils/types"
 
-func (t T) Less(rhs T) bool {
-	return t.value < rhs.value
-}
-
-func (t T) Equal(rhs T) bool {
-	return (t.value == rhs.value)
-}
+type T = types.Integer32
 
 type Pair struct {
 	first  int

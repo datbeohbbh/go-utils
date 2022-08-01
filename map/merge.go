@@ -1,6 +1,6 @@
 package treap
 
-import compare "github.com/datbeohbbh/go-utils/map/interfaces"
+import compare "github.com/datbeohbbh/go-utils/interfaces"
 
 func merge[K compare.IComparator[K], V any](leftNode *node[K, V], rightNode *node[K, V]) *node[K, V] {
 	if leftNode.empty() || rightNode.empty() {

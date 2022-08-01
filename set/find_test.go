@@ -4,22 +4,27 @@ import (
 	"math/rand"
 	"testing"
 	"time"
+
+	"github.com/datbeohbbh/go-utils/types"
 )
 
 func TestFindSmall(t *testing.T) {
 	set := New[T]()
 	n := 10
 	for i := 1; i <= n; i++ {
-		set.Insert(T{value: i})
+		v := types.NewInteger[int32](int32(i))
+		set.Insert(v)
 	}
 	for i := 1; i <= n; i++ {
-		ok := set.Find(T{value: i})
+		v := types.NewInteger[int32](int32(i))
+		ok := set.Find(v)
 		if !ok {
 			t.Errorf("expected: value %d should be in set, found: %v", i, ok)
 		}
 	}
 	for i := 1; i <= n; i++ {
-		ok := set.Find(T{value: i + n})
+		v := types.NewInteger[int32](int32(i + n))
+		ok := set.Find(v)
 		if ok {
 			t.Errorf("expected: value %d should not be in set, found: %v", i, ok)
 		}
@@ -37,25 +42,29 @@ func TestFindStress(t *testing.T) {
 
 	for i := 1; i <= n; i++ {
 		value := l + rand.Intn(r-l+1)
-		set.Insert(T{value: value})
+		v := types.NewInteger[int32](int32(value))
+		set.Insert(v)
 		if i <= 1000 {
 			a = append(a, value)
 		}
 	}
 
 	for _, v := range a {
-		ok := set.Find(T{value: v})
+		vv := types.NewInteger[int32](int32(v))
+		ok := set.Find(vv)
 		if !ok {
 			t.Errorf("expected: value %d should be in set, found: %v", v, ok)
 		}
 	}
 
 	for _, v := range a {
-		set.Remove(T{value: v})
+		vv := types.NewInteger[int32](int32(v))
+		set.Remove(vv)
 	}
 
 	for _, v := range a {
-		ok := set.Find(T{value: v})
+		vv := types.NewInteger[int32](int32(v))
+		ok := set.Find(vv)
 		if ok {
 			t.Errorf("expected: value %d should not be in set, found: %v", v, ok)
 		}

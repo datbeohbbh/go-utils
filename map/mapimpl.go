@@ -1,6 +1,6 @@
 package treap
 
-import compare "github.com/datbeohbbh/go-utils/map/interfaces"
+import compare "github.com/datbeohbbh/go-utils/interfaces"
 
 type treeMap[K compare.IComparator[K], V any] struct {
 	tree *node[K, V]

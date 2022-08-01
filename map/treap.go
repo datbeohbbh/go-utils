@@ -5,7 +5,7 @@ import (
 	"math/rand"
 	"time"
 
-	compare "github.com/datbeohbbh/go-utils/map/interfaces"
+	compare "github.com/datbeohbbh/go-utils/interfaces"
 )
 
 const (

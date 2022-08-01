@@ -2,18 +2,22 @@ package avltree
 
 import (
 	"testing"
+
+	"github.com/datbeohbbh/go-utils/types"
 )
 
 func TestInsertSmall(t *testing.T) {
 	set := New[T]()
 	for i := 1; i <= 10; i++ {
-		set.Insert(T{value: i})
+		v := types.NewInteger[int32](int32(i))
+		set.Insert(v)
 	}
 	if set.Size() != 10 {
 		t.Errorf("expected: 10, found %d", set.Size())
 	}
 	for i := 1; i <= 20; i++ {
-		set.Insert(T{value: i})
+		v := types.NewInteger[int32](int32(i))
+		set.Insert(v)
 	}
 	if set.Size() != 20 {
 		t.Errorf("expected: 20, found %d", set.Size())
@@ -25,7 +29,8 @@ func TestInsertWithDuplicateValye(t *testing.T) {
 	repeat := 10
 	for ; repeat > 0; repeat-- {
 		for i := 1; i <= 50; i++ {
-			set.Insert(T{value: i})
+			v := types.NewInteger[int32](int32(i))
+			set.Insert(v)
 		}
 	}
 	if set.Size() != 50 {
@@ -62,10 +67,12 @@ func TestInsertStress(t *testing.T) {
 	n := 1000000
 	expectedSize := 1000000 + 10
 	for i := 1; i <= n; i++ {
-		set.Insert(T{value: i})
+		v := types.NewInteger[int32](int32(i))
+		set.Insert(v)
 	}
 	for i := n + 1; i <= n+10; i++ {
-		set.Insert(T{value: i})
+		v := types.NewInteger[int32](int32(i))
+		set.Insert(v)
 	}
 	if set.Size() != int64(expectedSize) {
 		t.Errorf("expected: %v, found: %v", expectedSize, set.Size())
