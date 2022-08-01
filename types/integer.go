@@ -33,8 +33,24 @@ func NewInteger[T interfaces.IInteger](value T) Integer[T] {
 
 type Integer8 = Integer[int8]
 
+func NewInteger8(value int8) Integer8 {
+	return NewInteger(value)
+}
+
 type Integer16 = Integer[int16]
+
+func NewInteger16(value int16) Integer16 {
+	return NewInteger(value)
+}
 
 type Integer32 = Integer[int32]
 
+func NewInteger32(value int) Integer32 {
+	return NewInteger(int32(value))
+}
+
 type Integer64 = Integer[int64]
+
+func NewInteger64(value int) Integer64 {
+	return NewInteger(int64(value))
+}
