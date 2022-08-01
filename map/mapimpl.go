@@ -2,11 +2,11 @@ package treap
 
 import compare "github.com/datbeohbbh/go-utils/map/interfaces"
 
-type treeMap[K compare.IComparator, V any] struct {
+type treeMap[K compare.IComparator[K], V any] struct {
 	tree *node[K, V]
 }
 
-func New[K compare.IComparator, V any]() *treeMap[K, V] {
+func New[K compare.IComparator[K], V any]() *treeMap[K, V] {
 	return &treeMap[K, V]{
 		tree: nil,
 	}

@@ -13,7 +13,7 @@ const (
 	UPPER_RANGE int64 = math.MaxInt64
 )
 
-type node[K compare.IComparator, V any] struct {
+type node[K compare.IComparator[K], V any] struct {
 	key      K
 	value    V
 	size     int64

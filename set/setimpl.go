@@ -4,11 +4,11 @@ import (
 	compare "github.com/datbeohbbh/go-utils/set/interfaces"
 )
 
-type treeSet[T compare.IComparator] struct {
+type treeSet[T compare.IComparator[T]] struct {
 	tree *node[T]
 }
 
-func New[T compare.IComparator]() *treeSet[T] {
+func New[T compare.IComparator[T]]() *treeSet[T] {
 	return &treeSet[T]{
 		tree: nil,
 	}

@@ -1,6 +1,6 @@
 package interfaces
 
-type IComparator interface {
-	Less(any) bool
-	Equal(any) bool
+type IComparator[T any] interface {
+	Less(T) bool
+	Equal(T) bool
 }
