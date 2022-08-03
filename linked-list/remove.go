@@ -1,7 +1,9 @@
 package linkedlist
 
-func (li *linkedList[T]) remove(value T) bool {
-	found := li.search(value)
+// Remove by value
+// Remove first position which equal to T.
+func (li *linkedList[T]) Remove(value T) bool {
+	found := li.Search(value)
 	if !found {
 		return false
 	}

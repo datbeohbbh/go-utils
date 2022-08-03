@@ -72,8 +72,8 @@ func (curTreeMap *treeMap[K, V]) Begin() (*K, *V) {
 	}
 }
 
-func (curTreeMap *treeMap[K, V]) End() (*K, *V) {
-	res := curTreeMap.tree.end()
+func (curTreeMap *treeMap[K, V]) Last() (*K, *V) {
+	res := curTreeMap.tree.last()
 	if res == nil {
 		return nil, nil
 	} else {
@@ -96,5 +96,18 @@ func (curTreeMap *treeMap[K, V]) UpperBound(key K) (*K, *V) {
 		return nil, nil
 	} else {
 		return &(res.key), &(res.value)
+	}
+}
+
+func (curTreeMap *treeMap[K, V]) Iterator() func() (*K, *V) {
+	curKey, curValue := curTreeMap.Begin()
+	return func() (*K, *V) {
+		if curKey == nil && curValue == nil {
+			return nil, nil
+		} else {
+			retKey, retValue := curKey, curValue
+			curKey, curValue = curTreeMap.UpperBound(*curKey)
+			return retKey, retValue
+		}
 	}
 }

@@ -1,7 +1,7 @@
 package linkedlist
 
-func (li *linkedList[T]) search(value T) bool {
-	if li.empty() {
+func (li *linkedList[T]) Search(value T) bool {
+	if li.Empty() {
 		return false
 	}
 	head := li.head

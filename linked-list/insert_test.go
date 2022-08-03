@@ -8,7 +8,6 @@ import (
 	"github.com/datbeohbbh/go-utils/types"
 )
 
-
 func TestInsert(t *testing.T) {
 	li := New[Integer32]()
 

@@ -1,7 +1,11 @@
 package linkedlist
 
-func (li *linkedList[T]) insert(item *node[T]) {
-	if li.empty() {
+func (li *linkedList[T]) Insert(value T) {
+	item := &node[T]{
+		value: value,
+		next:  nil,
+	}
+	if li.Empty() {
 		li.head = item
 	} else {
 		li.tail.next = item

@@ -9,4 +9,7 @@ go-test-set:
 go-test-map:
 	go test -v -timeout=50s -count=1 $(DIR)/map/...
 
-go-test-all: go-test-set go-test-map
+go-test-linked-list:
+	go test -v -timeout=10s -count=1 $(DIR)/linked-list/...
+
+go-test-all: go-test-set go-test-map go-test-linked-list

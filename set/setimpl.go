@@ -74,11 +74,24 @@ func (curTreeSet *treeSet[T]) Begin() *T {
 	}
 }
 
-func (curTreeSet *treeSet[T]) End() *T {
-	res := curTreeSet.tree.end()
+func (curTreeSet *treeSet[T]) Last() *T {
+	res := curTreeSet.tree.last()
 	if res == nil {
 		return nil
 	} else {
 		return &(res.value)
+	}
+}
+
+func (curTreeSet *treeSet[T]) Iterator() func() *T {
+	curValue := curTreeSet.Begin()
+	return func() *T {
+		if curValue == nil {
+			return nil
+		} else {
+			retValue := curValue
+			curValue, _ = curTreeSet.UpperBound(*curValue)
+			return retValue
+		}
 	}
 }
