@@ -1,15 +1,18 @@
 DIR=$(shell pwd)
 
-go-format:
+format:
 	gofmt -l $(DIR) && gofmt -s -w $(DIR)
 
-go-test-set:
+test-set:
 	go test -v -timeout=20s -count=1 $(DIR)/set/...
 
-go-test-map:
+test-map:
 	go test -v -timeout=50s -count=1 $(DIR)/map/...
 
-go-test-linked-list:
+test-linked-list:
 	go test -v -timeout=10s -count=1 $(DIR)/linked-list/...
 
-go-test-all: go-test-set go-test-map go-test-linked-list
+test-queue:
+	go test -v -timeout=10s -count=1 $(DIR)/queue/...
+
+test-all: test-set test-map test-linked-list test-queue
