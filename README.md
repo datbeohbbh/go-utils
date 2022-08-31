@@ -29,7 +29,7 @@ docker run -it --rm -v $(pwd):/go-utils utils/go-utils sh
 
 ## [*Qu - Queue*](https://github.com/datbeohbbh/go-utils/tree/master/queue)
 
-#### [Queue example](https://github.com/datbeohbbh/go-utils/examples/queue/main.go)
+#### [Queue example](https://github.com/datbeohbbh/go-utils/blob/master/examples/queue/main.go)
 
 ### Types
 
@@ -102,7 +102,7 @@ clears current queue.
 
 ## [li - Linked List](https://github.com/datbeohbbh/go-utils/tree/master/linked-list)
 
-#### [Linked list example](https://github.com/datbeohbbh/go-utils/examples/linkedlist/main.go)
+#### [Linked list example](https://github.com/datbeohbbh/go-utils/blob/master/examples/linkedlist/main.go)
 
 ### Types
 
