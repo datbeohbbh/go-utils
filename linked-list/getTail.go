@@ -1,6 +1,6 @@
 package linkedlist
 
-func (li *linkedList[T]) GetTail() *T {
+func (li *LinkedList[T]) GetTail() *T {
 	if li.Empty() {
 		return nil
 	}

@@ -1,6 +1,6 @@
 package queue
 
-func (qu *queue[T]) Back() *T {
+func (qu *Queue[T]) Back() *T {
 	if qu.Empty() {
 		return nil
 	} else {

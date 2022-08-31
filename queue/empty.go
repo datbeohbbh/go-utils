@@ -1,5 +1,5 @@
 package queue
 
-func (qu *queue[T]) Empty() bool {
+func (qu *Queue[T]) Empty() bool {
 	return qu.Size() == 0
 }

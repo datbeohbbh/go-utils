@@ -1,6 +1,6 @@
 package queue
 
-func (qu *queue[T]) Front() *T {
+func (qu *Queue[T]) Front() *T {
 	if qu.Empty() {
 		return nil
 	}

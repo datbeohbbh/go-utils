@@ -1,5 +1,5 @@
 package linkedlist
 
-func (li *linkedList[T]) Size() int64 {
+func (li *LinkedList[T]) Size() int64 {
 	return li.size
 }

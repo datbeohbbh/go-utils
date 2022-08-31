@@ -1,6 +1,6 @@
 package linkedlist
 
-func (li *linkedList[T]) Search(value T) bool {
+func (li *LinkedList[T]) Search(value T) bool {
 	if li.Empty() {
 		return false
 	}

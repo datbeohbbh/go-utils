@@ -1,6 +1,6 @@
 package linkedlist
 
-func (li *linkedList[T]) Insert(value T) {
+func (li *LinkedList[T]) Insert(value T) {
 	item := &node[T]{
 		value: value,
 		next:  nil,

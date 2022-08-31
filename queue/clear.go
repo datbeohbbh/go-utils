@@ -1,7 +1,7 @@
 package queue
 
-func (qu *queue[T]) Clear() {
+func (qu *Queue[T]) Clear() {
 	if !qu.Empty() {
-		*qu = queue[T]{}
+		*qu = Queue[T]{}
 	}
 }

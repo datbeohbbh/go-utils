@@ -2,22 +2,22 @@ package treap
 
 import compare "github.com/datbeohbbh/go-utils/interfaces"
 
-type treeMap[K compare.IComparator[K], V any] struct {
+type TreeMap[K compare.IComparator[K], V any] struct {
 	tree *node[K, V]
 }
 
-func New[K compare.IComparator[K], V any]() *treeMap[K, V] {
-	return &treeMap[K, V]{
+func New[K compare.IComparator[K], V any]() *TreeMap[K, V] {
+	return &TreeMap[K, V]{
 		tree: nil,
 	}
 }
 
-func (curTreeMap *treeMap[K, V]) search(key K) (*node[K, V], bool) {
+func (curTreeMap *TreeMap[K, V]) search(key K) (*node[K, V], bool) {
 	res, existed := curTreeMap.tree.search(key)
 	return res, existed
 }
 
-func (curTreeMap *treeMap[K, V]) Get(key K) *V {
+func (curTreeMap *TreeMap[K, V]) Get(key K) *V {
 	res, _ := curTreeMap.tree.search(key)
 	if res == nil {
 		return nil
@@ -26,12 +26,12 @@ func (curTreeMap *treeMap[K, V]) Get(key K) *V {
 	}
 }
 
-func (curTreeMap *treeMap[K, V]) Contains(key K) bool {
+func (curTreeMap *TreeMap[K, V]) Contains(key K) bool {
 	_, existed := curTreeMap.search(key)
 	return existed
 }
 
-func (curTreeMap *treeMap[K, V]) Put(key K, value V) {
+func (curTreeMap *TreeMap[K, V]) Put(key K, value V) {
 	if curTreeMap.Contains(key) {
 		curTreeMap.Erase(key)
 	}
@@ -45,25 +45,25 @@ func (curTreeMap *treeMap[K, V]) Put(key K, value V) {
 	})
 }
 
-func (curTreeMap *treeMap[K, V]) Erase(key K) bool {
+func (curTreeMap *TreeMap[K, V]) Erase(key K) bool {
 	erased := true
 	curTreeMap.tree, erased = curTreeMap.tree.erase(key)
 	return erased
 }
 
-func (curTreeMap *treeMap[K, V]) Size() int64 {
+func (curTreeMap *TreeMap[K, V]) Size() int64 {
 	return curTreeMap.tree.size
 }
 
-func (curTreeMap *treeMap[K, V]) Empty() bool {
+func (curTreeMap *TreeMap[K, V]) Empty() bool {
 	return curTreeMap.tree.empty()
 }
 
-func (curTreeMap *treeMap[K, V]) Clear() {
+func (curTreeMap *TreeMap[K, V]) Clear() {
 	curTreeMap.tree = nil
 }
 
-func (curTreeMap *treeMap[K, V]) Begin() (*K, *V) {
+func (curTreeMap *TreeMap[K, V]) Begin() (*K, *V) {
 	res := curTreeMap.tree.begin()
 	if res == nil {
 		return nil, nil
@@ -72,7 +72,7 @@ func (curTreeMap *treeMap[K, V]) Begin() (*K, *V) {
 	}
 }
 
-func (curTreeMap *treeMap[K, V]) Last() (*K, *V) {
+func (curTreeMap *TreeMap[K, V]) Last() (*K, *V) {
 	res := curTreeMap.tree.last()
 	if res == nil {
 		return nil, nil
@@ -81,7 +81,7 @@ func (curTreeMap *treeMap[K, V]) Last() (*K, *V) {
 	}
 }
 
-func (curTreeMap *treeMap[K, V]) LowerBound(key K) (*K, *V) {
+func (curTreeMap *TreeMap[K, V]) LowerBound(key K) (*K, *V) {
 	res := curTreeMap.tree.lowerBound(key)
 	if res == nil {
 		return nil, nil
@@ -90,7 +90,7 @@ func (curTreeMap *treeMap[K, V]) LowerBound(key K) (*K, *V) {
 	}
 }
 
-func (curTreeMap *treeMap[K, V]) UpperBound(key K) (*K, *V) {
+func (curTreeMap *TreeMap[K, V]) UpperBound(key K) (*K, *V) {
 	res := curTreeMap.tree.upperBound(key)
 	if res == nil {
 		return nil, nil
@@ -99,7 +99,7 @@ func (curTreeMap *treeMap[K, V]) UpperBound(key K) (*K, *V) {
 	}
 }
 
-func (curTreeMap *treeMap[K, V]) Iterator() func() (*K, *V) {
+func (curTreeMap *TreeMap[K, V]) Iterator() func() (*K, *V) {
 	curKey, curValue := curTreeMap.Begin()
 	return func() (*K, *V) {
 		if curKey == nil && curValue == nil {

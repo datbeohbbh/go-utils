@@ -1,6 +1,6 @@
 package linkedlist
 
-func (li *linkedList[T]) GetHead() *T {
+func (li *LinkedList[T]) GetHead() *T {
 	if li.Empty() {
 		return nil
 	}

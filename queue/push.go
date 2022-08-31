@@ -1,6 +1,6 @@
 package queue
 
-func (qu *queue[T]) Push(value T) {
+func (qu *Queue[T]) Push(value T) {
 	item := &node[T]{
 		next:  nil,
 		value: value,

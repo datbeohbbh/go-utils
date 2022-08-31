@@ -1,5 +1,5 @@
 package linkedlist
 
-func (li *linkedList[T]) Empty() bool {
+func (li *LinkedList[T]) Empty() bool {
 	return li.Size() == 0
 }

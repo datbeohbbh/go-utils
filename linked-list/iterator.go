@@ -1,6 +1,6 @@
 package linkedlist
 
-func (li *linkedList[T]) Iterator() func() *T {
+func (li *LinkedList[T]) Iterator() func() *T {
 	curHead := li.head
 	return func() *T {
 		if curHead == nil {

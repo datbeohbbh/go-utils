@@ -1,5 +1,5 @@
 package queue
 
-func (qu *queue[T]) Size() int64 {
+func (qu *Queue[T]) Size() int64 {
 	return qu.size
 }
