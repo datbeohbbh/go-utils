@@ -6,7 +6,7 @@
 ### Get from github
 
 ```bash
-go get github.com/datbeohbbh/go-utils
+go get -u github.com/datbeohbbh/go-utils
 ```
 
 ### Play with source
