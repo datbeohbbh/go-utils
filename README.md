@@ -108,6 +108,7 @@ func (qu *Queue[T]) Clear()
 clears current queue.
 Complexity: *O(1)*.
 
+- - -
 [Linked List Doc]::
 
 ## [li - Linked List](https://github.com/datbeohbbh/go-utils/tree/master/linked-list)
@@ -198,11 +199,14 @@ func (li *LinkedList[T]) Iterator() func() *T
 returns the lazy function, so that each time that function is invoked, it returns `next` element in the linked list or `nil` if reached the end of linked list (check example for more details).
 Complexity: *O(SIZE_OF_LINKED_LIST)*.
 
+- - -
 [Map Doc]::
 
 ## [*map - TreeMap*](https://github.com/datbeohbbh/go-utils/tree/master/map)
 
 #### [Map example](https://github.com/datbeohbbh/go-utils/blob/master/examples/map/main.go)
+
+#### *`Map` is a sorted associative container that contains key-value pairs with unique keys. Here I used [Treap](https://cp-algorithms.com/data_structures/treap.html) as core algorithm.*
 
 ### Types 
 
@@ -210,19 +214,20 @@ Complexity: *O(SIZE_OF_LINKED_LIST)*.
 ```go
 type node[K compare.IComparator[K], V any] struct
 ```
-Type parameter for key `K` must implement methods `Less(T) bool`, `Equal(T) bool` of interface [IComparator[T  any]](https://github.com/datbeohbbh/go-utils/blob/master/interfaces/comparator.go)
+Type parameter for key `K` must implement methods `Less(T) bool`, `Equal(T) bool` of interface [IComparator[T  any]](https://github.com/datbeohbbh/go-utils/blob/master/interfaces/comparator.go).
 
 #### [type TreeMap](https://github.com/datbeohbbh/go-utils/blob/master/map/mapImpl.go)
 ```go
 type TreeMap[K compare.IComparator[K], V any] struct
 ```
-Type parameter for key `K` must implement methods `Less(T) bool`, `Equal(T) bool` of interface [IComparator[T  any]](https://github.com/datbeohbbh/go-utils/blob/master/interfaces/comparator.go)
+Type parameter for key `K` must implement methods `Less(T) bool`, `Equal(T) bool` of interface [IComparator[T  any]](https://github.com/datbeohbbh/go-utils/blob/master/interfaces/comparator.go).
 
 #### func [New](https://github.com/datbeohbbh/go-utils/blob/master/map/mapImpl.go)
 ```go
-type TreeMap[K compare.IComparator[K], V any] struct
+func New[K compare.IComparator[K], V any]() *TreeMap[K, V]
 ```
-return a pointer to the new tree map.
+- Type parameter for key `K` must implement methods `Less(T) bool`, `Equal(T) bool` of interface [IComparator[T  any]](https://github.com/datbeohbbh/go-utils/blob/master/interfaces/comparator.go).
+- return a pointer to the new tree map.
 
 #### func [Put](https://github.com/datbeohbbh/go-utils/blob/master/map/mapImpl.go)
 ```go
@@ -284,13 +289,13 @@ Complexity: *O(log(SIZE_OF_MAP))*.
 ```go
 func (curTreeMap *TreeMap[K, V]) LowerBound(key K) (*K, *V)
 ```
-returns the key (pointer), value (pointer) pair of the node with smallest key value greater or equal `key`. Complexity: *O(log(SIZE_OF_MAP))*.
+returns the key (pointer), value (pointer) pair of the node with smallest (according to your comparison method) key value greater than or equal `key`. Complexity: *O(log(SIZE_OF_MAP))*.
 
 #### func [UpperBound](https://github.com/datbeohbbh/go-utils/blob/master/map/mapImpl.go)
 ```go
 func (curTreeMap *TreeMap[K, V]) UpperBound(key K) (*K, *V)
 ```
-returns the key (pointer), value (pointer) pair of the node with smallest key value greater than `key`. 
+returns the key (pointer), value (pointer) pair of the node with smallest (according to your comparison method) key value greater than `key`. 
 Complexity: *O(log(SIZE_OF_MAP))*.
 
 #### func [Iterator](https://github.com/datbeohbbh/go-utils/blob/master/map/mapImpl.go)
@@ -306,3 +311,103 @@ func (curTreeMap *TreeMap[K, V]) Clear()
 ```
 clears the tree map.
 Complexity: *O(1)*.
+
+- - -
+[Set Doc]::
+
+## [*set - TreeSet*](https://github.com/datbeohbbh/go-utils/tree/master/set)
+
+#### [Set example](https://github.com/datbeohbbh/go-utils/blob/master/examples/set/main.go)
+
+#### *`Set` is an associative container that contains a sorted set of unique objects. Here I used [AVL Tree](https://en.wikipedia.org/wiki/AVL_tree) as core algorithm.*
+
+### Types 
+
+#### [type node](https://github.com/datbeohbbh/go-utils/blob/master/set/avlTree.go) (not exported)
+```go
+type node[T compare.IComparator[T]] struct
+```
+Type parameter `T` must implement methods `Less(T) bool`, `Equal(T) bool` of interface [IComparator[T  any]](https://github.com/datbeohbbh/go-utils/blob/master/interfaces/comparator.go).
+
+#### [type TreeSet](https://github.com/datbeohbbh/go-utils/blob/master/set/setImpl.go)
+```go
+type TreeSet[T compare.IComparator[T]] struct
+```
+Type parameter `T` must implement methods `Less(T) bool`, `Equal(T) bool` of interface [IComparator[T  any]](https://github.com/datbeohbbh/go-utils/blob/master/interfaces/comparator.go).
+
+#### func [New](https://github.com/datbeohbbh/go-utils/blob/master/set/setImpl.go)
+```go
+func New[T compare.IComparator[T]]() *TreeSet[T]
+```
+- Type parameter `T` must implement methods `Less(T) bool`, `Equal(T) bool` of interface [IComparator[T  any]](https://github.com/datbeohbbh/go-utils/blob/master/interfaces/comparator.go).
+- returns a pointer to the new tree set.
+
+#### func [Insert](https://github.com/datbeohbbh/go-utils/blob/master/set/setImpl.go)
+```go
+func (curTreeSet *TreeSet[T]) Insert(value T) bool
+```
+if `value` is not represented in set, `value` is inserted and returns true. Otherwise, return `false`.
+Complexity: *O(log(SIZE_OF_SET))*.
+
+#### func [Remove](https://github.com/datbeohbbh/go-utils/blob/master/set/setImpl.go)
+```go
+func (curTreeSet *TreeSet[T]) Remove(value T) bool
+```
+if `value` is represented in set, `value` is removed and returns `true`. Otherwise, return `false`.
+Complexity: *O(log(SIZE_OF_SET))*.
+
+#### func [Find](https://github.com/datbeohbbh/go-utils/blob/master/set/setImpl.go)
+```go
+func (curTreeSet *TreeSet[T]) Find(value T) bool
+```
+returns `true` is `value` is represented in set, otherwise `false`.
+Complexity: *O(log(SIZE_OF_SET))*.
+
+#### func [Begin](https://github.com/datbeohbbh/go-utils/blob/master/set/setImpl.go)
+```go
+func (curTreeSet *TreeSet[T]) Begin() *T
+```
+returns a pointer to the value of the smallest (according to your comparison method) element in set. Returns `nil` if set is empty.
+Complexity: *O(log(SIZE_OF_SET))*.
+
+#### func [Last](https://github.com/datbeohbbh/go-utils/blob/master/set/setImpl.go)
+```go
+func (curTreeSet *TreeSet[T]) Last() *T
+```
+returns a pointer to the value of the biggest (according to your comparison method) element in set. Returns `nil` if set is empty.
+Complexity: *O(log(SIZE_OF_SET))*.
+
+#### func [LowerBound](https://github.com/datbeohbbh/go-utils/blob/master/set/setImpl.go)
+```go
+func (curTreeSet *TreeSet[T]) LowerBound(value T) (*T, bool)
+```
+returns a pointer the the value of the smallest (according to your comparison method) element in set that greater than or equal `value`. Returns `nil` if there is no such element.
+Complexity: *O(log(SIZE_OF_SET))*.
+
+#### func [UpperBound](https://github.com/datbeohbbh/go-utils/blob/master/set/setImpl.go)
+```go
+func (curTreeSet *TreeSet[T]) UpperBound(value T) (*T, bool)
+```
+returns a pointer the the value of the smallest (according to your comparison method) element in set that greater than `value`. Returns `nil` if there is no such element.
+Complexity: *O(log(SIZE_OF_SET))*.
+
+#### func [Empty](https://github.com/datbeohbbh/go-utils/blob/master/set/setImpl.go)
+```go
+func (curTreeSet *TreeSet[T]) Empty() bool
+```
+return `true` if set is empty, otherwise `false`.
+Complexity: *O(1)*.
+
+#### func [Size](https://github.com/datbeohbbh/go-utils/blob/master/set/setImpl.go)
+```go
+func (curTreeSet *TreeSet[T]) Size() int64
+```
+return the size of the set.
+Complexity: *O(1)*.
+
+#### func [Iterator](https://github.com/datbeohbbh/go-utils/blob/master/set/setImpl.go)
+```go
+func (curTreeSet *TreeSet[T]) Iterator() func() *T
+```
+returns the lazy function, so that each time that function is invoked, it returns the value (pointer) of next node with value in ascending order (check example for more details). 
+Complexity (iterate over the set): *O(SIZE_OF_SET * log(SIZE_OF_SET))*.
