@@ -1,13 +1,13 @@
 ## **Table of contents**
-1. [Go Utils](#go-utils)
-2. [How to use?](#how-to-use)
-3. [Docs](#docs)
-	1. [Queue](#qu---queue)
-	2. [Linked List](#li---linked-list)
-	3. [Stack](#todo)
-	4. [Deque](#todo)
-	5. [TreeMap](map---treemap)
-	6. [TreeSet](set---treeset)
+- [Go Utils](#go-utils)
+- [How to use?](#how-to-use)
+- [Docs](#docs)
+	- [Queue](#qu---queue)
+	- [Linked List](#li---linked-list)
+	- [Stack](#todo)
+	- [Deque](#todo)
+	- [TreeMap](#map---treemap)
+	- [TreeSet](#set---treeset)
 
 - - -
 
@@ -431,6 +431,7 @@ func (curTreeSet *TreeSet[T]) Clear()
 ```
 clears the set. Complexity: *O(1)*.
 
+- - -
 
 ## TODO
 - Stack
