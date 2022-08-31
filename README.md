@@ -1,4 +1,5 @@
 ## **Go Utils**
+*This data structure library is my small personal project in the summer of 2022. Its main purpose is that I use some of them for my bigger one.*
 
 ## **How to use?**
 
@@ -41,7 +42,7 @@ type node[T any] struct {
 }
 ```
 
-#### [type queue](https://github.com/datbeohbbh/go-utils/blob/master/queue/queueImpl.go)
+#### [type Queue](https://github.com/datbeohbbh/go-utils/blob/master/queue/queueImpl.go)
 ```go
 type Queue[T any] struct {
 	head *node[T]
@@ -115,7 +116,7 @@ type node[T compare.IEqual[T]] struct {
 ```
 type parameter `T` must implement `Equal(T) bool` method of interface [IEqual](https://github.com/datbeohbbh/go-utils/blob/master/interfaces/comparator.go)
 
-#### [type linkedList](https://github.com/datbeohbbh/go-utils/blob/master/linked-list/linkedListImpl.go)
+#### [type LinkedList](https://github.com/datbeohbbh/go-utils/blob/master/linked-list/linkedListImpl.go)
 ```go
 type LinkedList[T compare.IEqual[T]] struct {
 	head *node[T]
