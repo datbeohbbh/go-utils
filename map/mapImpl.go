@@ -52,6 +52,9 @@ func (curTreeMap *TreeMap[K, V]) Erase(key K) bool {
 }
 
 func (curTreeMap *TreeMap[K, V]) Size() int64 {
+	if curTreeMap.tree.empty() {
+		return 0
+	}
 	return curTreeMap.tree.size
 }
 
