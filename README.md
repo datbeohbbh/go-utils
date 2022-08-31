@@ -1,3 +1,16 @@
+## **Table of contents**
+1. [Go Utils](#go-utils)
+2. [How to use?](#how-to-use)
+3. [Docs](#docs)
+	1. [Queue](#qu---queue)
+	2. [Linked List](#li---linked-list)
+	3. [Stack](#todo)
+	4. [Deque](#todo)
+	5. [TreeMap](map---treemap)
+	6. [TreeSet](set---treeset)
+
+- - -
+
 ## **Go Utils**
 *This data structure library is my small personal project in the summer of 2022. Its main purpose is that I use some of them for my bigger one.*
 
@@ -411,3 +424,15 @@ func (curTreeSet *TreeSet[T]) Iterator() func() *T
 ```
 returns the lazy function, so that each time that function is invoked, it returns the value (pointer) of next node with value in ascending order (check example for more details). 
 Complexity (iterate over the set): *O(SIZE_OF_SET * log(SIZE_OF_SET))*.
+
+#### func [Clear](https://github.com/datbeohbbh/go-utils/blob/master/set/setImpl.go)
+```go
+func (curTreeSet *TreeSet[T]) Clear()
+```
+clears the set. Complexity: *O(1)*.
+
+
+## TODO
+- Stack
+- Deque
+- Thinking??
