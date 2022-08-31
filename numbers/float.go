@@ -1,4 +1,4 @@
-package types
+package numbers
 
 import (
 	"github.com/datbeohbbh/go-utils/interfaces"

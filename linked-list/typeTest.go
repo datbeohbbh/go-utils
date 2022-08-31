@@ -1,7 +1,7 @@
 package linkedlist
 
 import (
-	number "github.com/datbeohbbh/go-utils/types"
+	number "github.com/datbeohbbh/go-utils/numbers"
 )
 
 type Integer32 = number.Integer32

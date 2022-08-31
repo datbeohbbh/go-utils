@@ -1,8 +1,8 @@
 package avltree
 
-import "github.com/datbeohbbh/go-utils/types"
+import "github.com/datbeohbbh/go-utils/numbers"
 
-type T = types.Integer32
+type T = numbers.Integer32
 
 type Pair struct {
 	first  int

@@ -3,7 +3,7 @@ package avltree
 import (
 	"testing"
 
-	"github.com/datbeohbbh/go-utils/types"
+	"github.com/datbeohbbh/go-utils/numbers"
 )
 
 func TestEmpty(t *testing.T) {
@@ -14,7 +14,7 @@ func TestEmpty(t *testing.T) {
 
 	n := 1000
 	for i := 1; i <= n; i++ {
-		v := types.NewInteger[int32](int32(i))
+		v := numbers.NewInteger[int32](int32(i))
 		set.Insert(v)
 	}
 	if set.Empty() {
@@ -22,7 +22,7 @@ func TestEmpty(t *testing.T) {
 	}
 
 	for i := 1; i <= n+n; i++ {
-		v := types.NewInteger[int32](int32(i))
+		v := numbers.NewInteger[int32](int32(i))
 		set.Remove(v)
 	}
 	if !set.Empty() {
@@ -30,7 +30,7 @@ func TestEmpty(t *testing.T) {
 	}
 
 	for i := 1; i <= n; i++ {
-		v := types.NewInteger[int32](int32(i))
+		v := numbers.NewInteger[int32](int32(i))
 		set.Insert(v)
 	}
 	set.Clear()

@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/datbeohbbh/go-utils/types"
+	"github.com/datbeohbbh/go-utils/numbers"
 )
 
 func TestInsert(t *testing.T) {
@@ -13,7 +13,7 @@ func TestInsert(t *testing.T) {
 
 	a := []int{1, 2, 3, 4, 6, 6, 5, 4, 3, 2, 1}
 	for _, v := range a {
-		vv := types.NewInteger(int32(v))
+		vv := numbers.NewInteger(int32(v))
 		li.Insert(vv)
 	}
 
@@ -31,7 +31,7 @@ func TestInsertStress(t *testing.T) {
 	r := rand.Intn(1000000000)
 
 	for i := 1; i <= n; i++ {
-		v := types.NewInteger(int32(l + rand.Intn(r-l+1)))
+		v := numbers.NewInteger(int32(l + rand.Intn(r-l+1)))
 		li.Insert(v)
 	}
 

@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/datbeohbbh/go-utils/types"
+	"github.com/datbeohbbh/go-utils/numbers"
 )
 
 func TestIterator(t *testing.T) {
@@ -19,7 +19,7 @@ func TestIterator(t *testing.T) {
 	has := make(map[int]bool)
 	for i := 1; i <= n; i++ {
 		rval := l + rand.Intn(r-l+1)
-		treeSet.Insert(types.NewInteger32(rval))
+		treeSet.Insert(numbers.NewInteger32(rval))
 		if !has[rval] {
 			a = append(a, rval)
 			has[rval] = true

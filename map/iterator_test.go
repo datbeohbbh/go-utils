@@ -6,12 +6,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/datbeohbbh/go-utils/types"
+	"github.com/datbeohbbh/go-utils/numbers"
 )
 
 func TestIterator(t *testing.T) {
 	rand.Seed(time.Now().UnixNano())
-	treeMap := New[types.Integer32, int64]()
+	treeMap := New[numbers.Integer32, int64]()
 	n := 100000
 	l := 10000
 	r := rand.Intn(1000000000)
@@ -25,7 +25,7 @@ func TestIterator(t *testing.T) {
 			a = append(a, key)
 		}
 		mp[key] = value
-		treeMap.Put(types.NewInteger32(key), value)
+		treeMap.Put(numbers.NewInteger32(key), value)
 	}
 
 	sort.Slice(a, func(i, j int) bool {
